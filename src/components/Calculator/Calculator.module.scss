@@ -1,4 +1,9 @@
+.logo {
+  margin-bottom: 88px;
+}
+
 .calculator {
+  width: 100%;
   max-width: 920px;
   background: #ffffff;
   box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
@@ -9,4 +14,17 @@
 
   display: flex;
   gap: 48px;
+
+  .info {
+    width: 100%;
+    max-width: 379px;
+  }
+
+  .result {
+    padding: 40px;
+    background: #00474b;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 413px;
+  }
 }
