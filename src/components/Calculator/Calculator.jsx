@@ -18,7 +18,7 @@ const Calculator = () => {
         <div className={styles.result}>
           <p>Tip Amount / person</p>
           <p>Total / person</p>
-          <button>Reset</button>
+          <button style={{ textTransform: 'uppercase' }}>Reset</button>
         </div>
       </section>
     </>
