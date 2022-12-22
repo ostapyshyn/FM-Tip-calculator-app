@@ -8,24 +8,24 @@ const Calculator = () => {
       <img src={logo} alt="logo" className={styles.logo} />
       <section className={styles.calculator}>
         <div className={styles.info}>
-          <p>Bill</p>
+          <p className={styles.name}>Bill</p>
           <input type="number" />
-          <p>Select Tip %</p>
-          <p>Number of People</p>
+          <p className={styles.name}>Select Tip %</p>
+          <p className={styles.name}>Number of People</p>
           <input type="number" name="" id="" />
         </div>
 
         <div className={styles.result}>
           <div className={styles.line}>
             <p className={styles.header}>
-              Tip Amount 
+              Tip Amount
               <span>/ person</span>
             </p>
             <p className={styles.cash}>$0.00</p>
           </div>
           <div className={styles.line}>
             <p className={styles.header}>
-              Total 
+              Total
               <span>/ person</span>
             </p>
             <p className={styles.cash}>$0.00</p>
