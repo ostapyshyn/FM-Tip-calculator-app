@@ -9,10 +9,15 @@ const Calculator = () => {
       <section className={styles.calculator}>
         <div className={styles.info}>
           <p className={styles.name}>Bill</p>
-          <input type="number" />
+          <input type="text" placeholder="0" />
           <p className={styles.name}>Select Tip %</p>
+          <button className={styles.tip}>5 %</button>
+          <button className={styles.tip}>10 %</button>
+          <button className={styles.tip}>15 %</button>
+          <button className={styles.tip}>25 %</button>
+          <button className={styles.tip}>50 %</button>
           <p className={styles.name}>Number of People</p>
-          <input type="number" name="" id="" />
+          <input type="text" name="" id="" placeholder="0" />
         </div>
 
         <div className={styles.result}>
