@@ -18,7 +18,7 @@ const Calculator = () => {
             <button className={styles.tip}>15 %</button>
             <button className={styles.tip}>25 %</button>
             <button className={styles.tip}>50 %</button>
-            <input className={styles.custom} type="text" name="" id="" placeholder="0" />
+            <input className={styles.custom} type="text" name="" id="" placeholder="Custom" />
           </div>
 
           <p className={styles.name}>Number of People</p>

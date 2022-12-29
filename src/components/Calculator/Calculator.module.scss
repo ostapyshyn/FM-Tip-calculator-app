@@ -18,6 +18,9 @@
   .info {
     width: 100%;
     max-width: 379px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     .input_bill {
       margin-bottom: 40px;
     }
@@ -42,6 +45,15 @@
       border: none;
       padding-block: 6px;
       padding-right: 17px;
+      font-family: 'Space Mono';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 36px;
+      text-align: right;
+      color: #00474b;
+      mix-blend-mode: normal;
+      opacity: 0.35;
       &:focus {
         border: 2px solid #26c2ae;
         outline: none;
@@ -57,6 +69,13 @@
       .custom {
         width: 117px;
         height: 48px;
+        font-family: 'Space Mono';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 36px;
+        text-align: right;
+        color: #547878 !important;
       }
       .tip {
         width: 117px;
