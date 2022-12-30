@@ -21,9 +21,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    .input_bill {
-      margin-bottom: 40px;
-    }
+
     .name {
       font-size: 16px;
       line-height: 24px;
@@ -35,6 +33,18 @@
       line-height: 24px;
       color: #5e7a7d;
       margin-bottom: 16px;
+    }
+
+    .input {
+      position: relative;
+      .dollar {
+        position: absolute;
+        top: 0;
+        left: 17px;
+        bottom: 0;
+        margin: auto 0;
+      }
+      margin-bottom: 40px;
     }
 
     input {
@@ -53,10 +63,13 @@
       text-align: right;
       color: #00474b;
       mix-blend-mode: normal;
-      opacity: 0.35;
       &:focus {
         border: 2px solid #26c2ae;
         outline: none;
+      }
+      &::placeholder {
+        color: #00474b;
+        opacity: 0.35;
       }
     }
     .tips {
@@ -74,8 +87,13 @@
         font-weight: 700;
         font-size: 24px;
         line-height: 36px;
-        text-align: right;
-        color: #547878 !important;
+        text-align: center;
+        padding-inline: 15px;
+
+        &::placeholder {
+          color: #547878;
+          opacity: 1;
+        }
       }
       .tip {
         width: 117px;

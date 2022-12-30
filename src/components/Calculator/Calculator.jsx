@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './Calculator.module.scss';
 import logo from '../assets/logo.svg';
+import person from '../assets/icon-person.svg';
+import dollar from '../assets/icon-dollar.svg';
 
 const Calculator = () => {
   return (
@@ -9,7 +11,11 @@ const Calculator = () => {
       <section className={styles.calculator}>
         <div className={styles.info}>
           <p className={styles.name}>Bill</p>
-          <input className={styles.input_bill} type="text" placeholder="0" />
+          <div className={styles.input}>
+            <input className={styles.input_bill} type="text" placeholder="0" />
+            <img src={dollar} alt="dollar" className={styles.dollar} />
+          </div>
+
           <p className={styles.select_tip}>Select Tip %</p>
 
           <div className={styles.tips}>
@@ -22,7 +28,10 @@ const Calculator = () => {
           </div>
 
           <p className={styles.name}>Number of People</p>
-          <input type="text" name="" id="" placeholder="0" />
+          <div className={styles.input}>
+            <input type="text" name="" id="" placeholder="0" />
+            <img src={person} alt="person" className={styles.dollar} />
+          </div>
         </div>
 
         <div className={styles.result}>
