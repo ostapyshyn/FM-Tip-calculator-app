@@ -6,6 +6,23 @@ import dollar from '../assets/icon-dollar.svg';
 
 const Calculator = () => {
   const [percent, setPercent] = useState();
+  const [people, setPeople] = useState();
+  const [bill, setBill] = useState();
+  const [message, setMessage] = useState();
+
+  const inputValidation = (data) => {
+    const regEx = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+    if (!regEx.test(data) && data !== '') {
+      setMessage('Can’t be zero');
+    } else {
+      setMessage('');
+    }
+  };
+
+  const handleSearchInput = (event) => {
+    setPeople(event.target.value);
+    inputValidation(event.target.value);
+  };
 
   return (
     <>
@@ -53,10 +70,20 @@ const Calculator = () => {
             </button>
             <input className={styles.custom} type="text" name="" id="" placeholder="Custom" />
           </div>
+          <div className={styles.mesage}>
+            <p className={styles.name}>Number of People</p>
+            <span>{message}</span>
+          </div>
 
-          <p className={styles.name}>Number of People</p>
           <div className={styles.input} style={{ marginBottom: '0px' }}>
-            <input type="text" name="" id="" placeholder="0" />
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="0"
+              value={people}
+              onChange={handleSearchInput}
+            />
             <img src={person} alt="person" className={styles.dollar} />
           </div>
         </div>
