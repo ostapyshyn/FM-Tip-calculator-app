@@ -5,24 +5,10 @@ import person from '../assets/icon-person.svg';
 import dollar from '../assets/icon-dollar.svg';
 
 const Calculator = () => {
-  const [percent, setPercent] = useState();
-  const [people, setPeople] = useState();
-  const [bill, setBill] = useState();
-  const [message, setMessage] = useState();
-
-  const inputValidation = (data) => {
-    const regEx = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
-    if (!regEx.test(data) && data !== '') {
-      setMessage('Can’t be zero');
-    } else {
-      setMessage('');
-    }
-  };
-
-  const handleSearchInput = (event) => {
-    setPeople(event.target.value);
-    inputValidation(event.target.value);
-  };
+  const [percent, setPercent] = useState('');
+  const [people, setPeople] = useState('');
+  const [bill, setBill] = useState('');
+  const [message, setMessage] = useState('');
 
   return (
     <>
@@ -31,7 +17,13 @@ const Calculator = () => {
         <div className={styles.info}>
           <p className={styles.name}>Bill</p>
           <div className={styles.input}>
-            <input className={styles.input_bill} type="text" placeholder="0" />
+            <input
+              className={styles.input_bill}
+              type="text"
+              placeholder="0"
+              value={bill}
+              onChange={(e) => setBill(e.target.value.replace(/[^0-9]/g, ''))}
+            />
             <img src={dollar} alt="dollar" className={styles.dollar} />
           </div>
 
@@ -68,11 +60,11 @@ const Calculator = () => {
               style={percent === 50 ? { background: '#26C2AE', color: '#00474B' } : null}>
               50%
             </button>
-            <input className={styles.custom} type="text" name="" id="" placeholder="Custom" />
+            <input className={styles.custom} type="number" name="" id="" placeholder="Custom" />
           </div>
           <div className={styles.mesage}>
             <p className={styles.name}>Number of People</p>
-            <span>{message}</span>
+            <span> {people === '0' ? 'Can`t be zero' : undefined}</span>
           </div>
 
           <div className={styles.input} style={{ marginBottom: '0px' }}>
@@ -82,7 +74,7 @@ const Calculator = () => {
               id=""
               placeholder="0"
               value={people}
-              onChange={handleSearchInput}
+              onChange={(e) => setPeople(e.target.value.replace(/[^0-9]/g, ''))}
             />
             <img src={person} alt="person" className={styles.dollar} />
           </div>
