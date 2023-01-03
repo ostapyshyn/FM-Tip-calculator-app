@@ -5,7 +5,7 @@ import person from '../assets/icon-person.svg';
 import dollar from '../assets/icon-dollar.svg';
 
 const Calculator = () => {
-  const [tip, setTip] = useState('');
+  const [tip, setTip] = useState(0);
   const [customTip, setCustomTip] = useState('');
   const [people, setPeople] = useState('');
   const [bill, setBill] = useState('');
@@ -18,7 +18,11 @@ const Calculator = () => {
 
   useEffect(() => {
     if (bill > 0 && (tip > 0 || customTip > 0) && people > 0) {
-      setTipAmount(parseFloat((bill * tip) / 100 / people).toFixed(2));
+      setTipAmount(
+        parseFloat((bill * (parseInt(customTip || 0) + parseInt(tip || 0))) / 100 / people).toFixed(
+          2,
+        ),
+      );
       setTotal(parseFloat((tipAmount * people + parseInt(bill)) / people).toFixed(2));
     }
   }, [bill, customTip, people, tip, tipAmount]);
