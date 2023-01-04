@@ -145,23 +145,32 @@
     border-radius: 15px;
     width: 100%;
     max-width: 413px;
+
     button {
-      background: #26c2ae;
+      background: #0d686d;
       border-radius: 5px;
       font-size: 20px;
       line-height: 30px;
       text-align: center;
-      color: #00474b;
+      color: rgba(0, 71, 75, 0.35);
       padding-block: 9px;
       width: 100%;
       margin-top: 97px;
       cursor: pointer;
+      // opacity: 0.35;
       &:hover {
         background: #9fe8df;
+        opacity: 1;
+        color: #00474b;
       }
       &:active {
         transform: scale(0.98);
       }
+    }
+
+    .outlined {
+      background: #26c2ae;
+      color: #00474b;
     }
     .line {
       display: flex;

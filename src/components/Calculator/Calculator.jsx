@@ -3,29 +3,47 @@ import styles from './Calculator.module.scss';
 import logo from '../assets/logo.svg';
 import person from '../assets/icon-person.svg';
 import dollar from '../assets/icon-dollar.svg';
+import clsx from 'clsx';
 
 const Calculator = () => {
-  const [tip, setTip] = useState(0);
+  const [tip, setTip] = useState('');
   const [customTip, setCustomTip] = useState('');
   const [people, setPeople] = useState('');
   const [bill, setBill] = useState('');
   const [total, setTotal] = useState('');
   const [tipAmount, setTipAmount] = useState('');
 
+  const result = clsx({
+    [styles.outlined]: bill && (tip || customTip) && people,
+  });
+
   console.log(
     `bill: ${bill}; tip: ${tip}; people: ${people}; tipAmount: ${tipAmount}; total: ${total}; customTip: ${customTip}`,
   );
 
   useEffect(() => {
-    if (bill > 0 && (tip > 0 || customTip > 0) && people > 0) {
+    if (bill && (tip || customTip) && people > 0) {
       setTipAmount(
-        parseFloat((bill * (parseInt(customTip || 0) + parseInt(tip || 0))) / 100 / people).toFixed(
-          2,
-        ),
+        parseFloat(
+          (parseFloat(bill) * (parseInt(customTip || 0) + parseInt(tip || 0))) / 100 / people,
+        ).toFixed(2),
       );
-      setTotal(parseFloat((tipAmount * people + parseInt(bill)) / people).toFixed(2));
+      setTotal(parseFloat((tipAmount * people + parseFloat(bill)) / people).toFixed(2));
     }
   }, [bill, customTip, people, tip, tipAmount]);
+
+  const handleNumber = (e) => {
+    let input = e.target.value;
+
+    if (input.match(/^([0-9]{1,})?(\.)?([0-9]{1,})?$/)) setBill(input);
+  };
+
+  const handleFloat = () => {
+    setBill(parseFloat(bill) || '');
+  };
+  const handleFloatPeople = () => {
+    setPeople(parseFloat(people) || '');
+  };
 
   return (
     <>
@@ -39,10 +57,12 @@ const Calculator = () => {
           <div className={styles.input}>
             <input
               className={styles.input_bill}
+              style={bill === '0' ? { borderColor: '#E17052' } : null}
               type="text"
               placeholder="0"
               value={bill}
-              onChange={(e) => setBill(e.target.value.replace(/[^0-9]/g, ''))}
+              onChange={handleNumber}
+              onBlur={handleFloat}
             />
             <img src={dollar} alt="dollar" className={styles.dollar} />
           </div>
@@ -120,7 +140,9 @@ const Calculator = () => {
               id=""
               placeholder="0"
               value={people}
+              style={people === '0' ? { borderColor: '#E17052' } : null}
               onChange={(e) => setPeople(e.target.value.replace(/[^0-9]/g, ''))}
+              onBlur={handleFloatPeople}
             />
             <img src={person} alt="person" className={styles.dollar} />
           </div>
@@ -143,7 +165,9 @@ const Calculator = () => {
             <p className={styles.cash}>{total > 0 ? total : '$0.00'}</p>
           </div>
 
-          <button style={{ textTransform: 'uppercase' }}>Reset</button>
+          <button className={result} style={{ textTransform: 'uppercase' }}>
+            Reset
+          </button>
         </div>
       </section>
     </>
