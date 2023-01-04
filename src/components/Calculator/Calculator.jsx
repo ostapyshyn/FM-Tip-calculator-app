@@ -37,7 +37,14 @@ const Calculator = () => {
 
     if (input.match(/^([0-9]{1,})?(\.)?([0-9]{1,})?$/)) setBill(input);
   };
-
+  const handleOnClickResult = () => {
+    setBill('');
+    setCustomTip('');
+    setTip('');
+    setPeople('');
+    setTipAmount('');
+    setTotal('');
+  };
   const handleFloat = () => {
     setBill(parseFloat(bill) || '');
   };
@@ -165,7 +172,10 @@ const Calculator = () => {
             <p className={styles.cash}>{total > 0 ? total : '$0.00'}</p>
           </div>
 
-          <button className={result} style={{ textTransform: 'uppercase' }}>
+          <button
+            className={result}
+            style={{ textTransform: 'uppercase' }}
+            onClick={handleOnClickResult}>
             Reset
           </button>
         </div>
