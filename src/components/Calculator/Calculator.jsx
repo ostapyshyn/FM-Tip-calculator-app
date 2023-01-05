@@ -122,18 +122,20 @@ const Calculator = () => {
               style={tip === 50 ? { background: '#26C2AE', color: '#00474B' } : null}>
               50%
             </button>
-            <input
-              className={styles.custom}
-              value={customTip}
-              onChange={(e) => {
-                setCustomTip(e.target.value.replace(/[^0-9]/g, ''));
-                setTip(0);
-              }}
-              type="text"
-              name=""
-              id=""
-              placeholder="Custom"
-            />
+            <div className={styles.custom_input}>
+              <input
+                className={styles.custom}
+                value={customTip}
+                onChange={(e) => {
+                  setCustomTip(e.target.value.replace(/[^0-9]/g, ''));
+                  setTip(0);
+                }}
+                type="text"
+                name=""
+                id=""
+                placeholder="Custom"
+              />
+            </div>
           </div>
           <div className={styles.mesage}>
             <p className={styles.name}>Number of People</p>
@@ -176,10 +178,11 @@ const Calculator = () => {
             className={result}
             style={{ textTransform: 'uppercase' }}
             onClick={handleOnClickResult}>
-            Reset
+            Reset 
           </button>
         </div>
-      </section>
+      </section> 
+     
     </>
   );
 };
