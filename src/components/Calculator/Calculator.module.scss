@@ -20,6 +20,7 @@
     flex-direction: column;
     max-width: 375px;
     padding-inline: 24px;
+    gap: 30px;
   }
 
   .info {
@@ -66,6 +67,9 @@
         margin: auto 0;
       }
       margin-bottom: 40px;
+      @include mq(768px) {
+        margin-bottom: 30px;
+      }
     }
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -115,6 +119,7 @@
       margin-bottom: 40px;
       @include mq(768px) {
         column-gap: 16px;
+        margin-bottom: 30px;
       }
       .custom_input {
         flex-basis: 0%;
