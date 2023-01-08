@@ -13,6 +13,21 @@ const Calculator = () => {
   const [total, setTotal] = useState('');
   const [tipAmount, setTipAmount] = useState('');
 
+  
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  
+  const { email, password } = formData;
+  
+  function onChange(e) {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  }
+
   const result = clsx({
     [styles.outlined]: bill && (tip || customTip) && people,
   });
@@ -178,11 +193,10 @@ const Calculator = () => {
             className={result}
             style={{ textTransform: 'uppercase' }}
             onClick={handleOnClickResult}>
-            Reset 
+            Reset
           </button>
         </div>
-      </section> 
-     
+      </section>
     </>
   );
 };
